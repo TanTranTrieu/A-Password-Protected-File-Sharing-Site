@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <% for( let index = 0; index < locals.downloadLinks.length; index++ ) { %>
+    <% if (locals.error===true &&
+    locals.downloadLinks[index].replace("/file/", "")===locals.incorrectPassword.id)
+    {%>
+
+    <form action="<%=downloadLinks[index] %>" method="post">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <button style="grid-column: span 2" type="submit">Download</button>
+    </form>
+    <div style="color: red">Incorrect Password!</div>
+    <% locals.error=false %> <% } else { %>
+    <form action="<%=downloadLinks[index] %>" method="post">
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" required />
+      <button style="grid-column: span 2" type="submit">Download</button>
+    </form>
+
+    <% }%> <% } %>
+  </body>
+</html>
